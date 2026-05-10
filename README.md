@@ -110,13 +110,35 @@ message: Parking action started
 
 # Manual License Plate Entry
 
-The integration also supports manually entered license plates.
+The integration supports manually entered license plates through the built-in Home Assistant services.
 
-To use this feature, first create a Home Assistant helper.
+Available services:
+
+- `twopark.start_plate`
+- `twopark.stop_plate`
+- `twopark.toggle_plate`
+
+These services can be used directly in:
+- automations
+- scripts
+- developer tools
+- Assist
 
 ---
 
-## Step 1 — Create a Text Helper
+## Example Service Call
+
+```yaml
+action: twopark.start_plate
+data:
+  plate: RG692Z
+```
+
+---
+
+# Dashboard Input (Optional)
+
+If you want to enter license plates directly from a Home Assistant dashboard, create a Home Assistant `input_text` helper.
 
 Go to:
 
@@ -136,39 +158,7 @@ Example entity name:
 input_text.handmatig_kenteken
 ```
 
-This helper will be used to enter license plates manually from the Home Assistant UI.
-
----
-
-## Step 2 — Create a Script
-
-Create a Home Assistant script similar to the following example:
-
-```yaml
-sequence:
-  - variables:
-      plate_value: >
-        {{ states('input_text.handmatig_kenteken')
-           | trim
-           | upper
-           | replace('-', '')
-           | replace(' ', '') }}
-
-  - condition: template
-    value_template: >
-      {{ plate_value not in ['', 'unknown', 'unavailable', 'none'] }}
-
-  - action: twopark.start_plate
-    data:
-      plate: "{{ plate_value }}"
-
-alias: Start 2Park Manual Plate
-```
-
-This script:
-- reads the helper value
-- normalizes the license plate
-- starts a parking session using the integration service
+This helper can then be used together with dashboard buttons, scripts or automations.
 
 ---
 
