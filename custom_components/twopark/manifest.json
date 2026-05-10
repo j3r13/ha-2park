@@ -1,0 +1,11 @@
+{
+  "domain": "twopark",
+  "name": "2Park",
+  "codeowners": ["@j3r13"],
+  "config_flow": true,
+  "documentation": "https://github.com/j3r13/ha-2park",
+  "issue_tracker": "https://github.com/j3r13/ha-2park/issues",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "0.1.0"
+}

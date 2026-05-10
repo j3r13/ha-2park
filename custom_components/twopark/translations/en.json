@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "2Park",
+        "description": "Log in with your 2Park account. Product ID and location are optional; leave them empty to auto-discover.",
+        "data": {
+          "email": "Email",
+          "password": "Password",
+          "product_id": "Product ID (optional)",
+          "location": "Location (optional)",
+          "locale": "Locale",
+          "scan_interval": "Scan interval"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to 2Park",
+      "invalid_auth": "Invalid login or no usable 2Park product found",
+      "unknown": "Unexpected error"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Scan interval"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+start_plate:
+  name: Start plate
+  description: Start een parkeeractie voor een handmatig ingevoerd kenteken.
+  fields:
+    plate:
+      name: Plate
+      description: Het kenteken dat gestart moet worden.
+      required: true
+      selector:
+        text:
+
+stop_plate:
+  name: Stop plate
+  description: Stop een parkeeractie voor een handmatig ingevoerd kenteken.
+  fields:
+    plate:
+      name: Plate
+      description: Het kenteken dat gestopt moet worden.
+      required: true
+      selector:
+        text:
+
+toggle_plate:
+  name: Toggle plate
+  description: Start of stop een parkeeractie voor een handmatig ingevoerd kenteken.
+  fields:
+    plate:
+      name: Plate
+      description: Het kenteken dat getoggeld moet worden.
+      required: true
+      selector:
+        text:

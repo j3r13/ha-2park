@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "2Park",
+        "description": "Log in met je 2Park-account. Product ID en locatie zijn optioneel; laat ze leeg voor automatische detectie.",
+        "data": {
+          "email": "E-mail",
+          "password": "Wachtwoord",
+          "product_id": "Product ID (optioneel)",
+          "location": "Locatie (optioneel)",
+          "locale": "Locale",
+          "scan_interval": "Scan-interval"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken met 2Park",
+      "invalid_auth": "Ongeldige login of geen bruikbaar 2Park-product gevonden",
+      "unknown": "Onverwachte fout"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Scan-interval"
+        }
+      }
+    }
+  }
+}
