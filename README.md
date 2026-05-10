@@ -102,7 +102,7 @@ Example attributes:
 ```yaml
 success: true
 verified: true
-plate: RG692Z
+plate: XX999X
 message: Parking action started
 ```
 
