@@ -14,6 +14,7 @@ This integration allows you to control and monitor your 2Park parking sessions d
 - Automatic temporary switch creation for manually entered plates
 - Balance sensor
 - Last action sensor
+- Is parkingaction active sensor
 - Verification after parking start/stop
 - Automatic product/location discovery
 
@@ -155,7 +156,7 @@ Text Helper
 Example entity name:
 
 ```text
-input_text.handmatig_kenteken
+input_text.manual_licenceplate
 ```
 
 This helper can then be used together with dashboard buttons, scripts or automations.
