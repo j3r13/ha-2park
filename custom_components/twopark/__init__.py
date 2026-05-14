@@ -36,7 +36,11 @@ from .const import (
 )
 from .coordinator import TwoParkCoordinator
 
-PLATFORMS: list[Platform] = [Platform.SWITCH, Platform.SENSOR]
+PLATFORMS: list[Platform] = [
+    Platform.SWITCH,
+    Platform.SENSOR,
+    Platform.BINARY_SENSOR,
+]
 
 
 def _get_first_entry_id(hass: HomeAssistant) -> str:
