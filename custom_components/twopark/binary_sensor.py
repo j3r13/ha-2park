@@ -9,7 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN
+from .const import CONF_PRODUCT_NAME, DOMAIN
 
 
 async def async_setup_entry(
@@ -73,10 +73,11 @@ class TwoParkActiveSessionBinarySensor(
 
     @property
     def device_info(self):
+        product_name = self.entry.data.get(CONF_PRODUCT_NAME, "")
         return {
             "identifiers": {
                 (DOMAIN, self.entry.entry_id)
             },
-            "name": "2Park",
+            "name": f"2Park {product_name}".strip(),
             "manufacturer": "2Park",
         }

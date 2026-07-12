@@ -152,7 +152,8 @@ class TwoParkApiClient:
                     return param.get("prr_default_value")
         return None
 
-    async def async_discover_defaults(self) -> dict[str, Any]:
+    async def async_discover_products(self) -> list[dict[str, Any]]:
+        """Discover all usable products for the logged-in account."""
         categories = await self.async_get_categories()
         found_products: list[dict[str, Any]] = []
 
@@ -160,31 +161,43 @@ class TwoParkApiClient:
             for product in category.get("cty_products", []):
                 if product.get("pdt_is_blocked") == "true":
                     continue
-                found_products.append({"category": category, "product": product})
+
+                product_id = product.get("pdt_id")
+                if not product_id:
+                    continue
+
+                location = self._find_default_location(product)
+                found_products.append(
+                    {
+                        "product_id": product_id,
+                        "product_name": product.get("pdt_name"),
+                        "category_name": category.get("cty_name"),
+                        "location": location,
+                    }
+                )
 
         if not found_products:
             raise TwoParkApiError("Geen bruikbaar 2Park product gevonden")
 
+        return found_products
+
+    async def async_discover_defaults(self) -> dict[str, Any]:
+        found_products = await self.async_discover_products()
         selected = found_products[0]
-        product = selected["product"]
-        category = selected["category"]
 
-        discovered_product_id = product.get("pdt_id")
-        discovered_location = self._find_default_location(product)
-
-        if not discovered_product_id:
-            raise TwoParkApiError("Geen product_id gevonden in 2Park response")
+        product_id = selected["product_id"]
+        location = selected["location"]
 
         if not self.product_id:
-            self.product_id = discovered_product_id
+            self.product_id = product_id
         if not self.location:
-            self.location = discovered_location
+            self.location = location
 
         return {
             "product_id": self.product_id,
             "location": self.location,
-            "product_name": product.get("pdt_name"),
-            "category_name": category.get("cty_name"),
+            "product_name": selected.get("product_name"),
+            "category_name": selected.get("category_name"),
             "product_count": len(found_products),
         }
 

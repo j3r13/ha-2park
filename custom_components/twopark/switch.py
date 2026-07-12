@@ -20,6 +20,7 @@ from .const import (
     ATTR_SUCCESS,
     ATTR_TIME,
     ATTR_VERIFIED,
+    CONF_PRODUCT_NAME,
     DATA_LAST_ACTION,
     DOMAIN,
     SIGNAL_LAST_ACTION_UPDATED,
@@ -161,9 +162,10 @@ class TwoParkMemberSwitch(CoordinatorEntity, SwitchEntity):
 
     @property
     def device_info(self):
+        product_name = self.entry.data.get(CONF_PRODUCT_NAME, "")
         return {
             "identifiers": {(DOMAIN, self.entry.entry_id)},
-            "name": "2Park",
+            "name": f"2Park {product_name}".strip(),
             "manufacturer": "Custom",
             "model": "2Park Direct API",
         }

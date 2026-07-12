@@ -3,14 +3,19 @@
     "step": {
       "user": {
         "title": "2Park",
-        "description": "Log in met je 2Park-account. Product ID en locatie zijn optioneel; laat ze leeg voor automatische detectie.",
+        "description": "Log in met je 2Park-account. Het juiste product en de juiste locatie worden automatisch gedetecteerd.",
         "data": {
           "email": "E-mail",
           "password": "Wachtwoord",
-          "product_id": "Product ID (optioneel)",
-          "location": "Locatie (optioneel)",
           "locale": "Locale",
           "scan_interval": "Scan-interval"
+        }
+      },
+      "product": {
+        "title": "Selecteer 2Park-product",
+        "description": "Er zijn meerdere producten gevonden voor dit account. Kies het product dat je wilt toevoegen.",
+        "data": {
+          "product_id": "Product"
         }
       }
     },
