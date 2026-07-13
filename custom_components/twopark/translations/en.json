@@ -3,14 +3,19 @@
     "step": {
       "user": {
         "title": "2Park",
-        "description": "Log in with your 2Park account. Product ID and location are optional; leave them empty to auto-discover.",
+        "description": "Log in with your 2Park account. The correct product and location will be discovered automatically.",
         "data": {
           "email": "Email",
           "password": "Password",
-          "product_id": "Product ID (optional)",
-          "location": "Location (optional)",
           "locale": "Locale",
           "scan_interval": "Scan interval"
+        }
+      },
+      "product": {
+        "title": "Select 2Park product",
+        "description": "Multiple products were found for this account. Choose the one you want to add.",
+        "data": {
+          "product_id": "Product"
         }
       }
     },
